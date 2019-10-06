@@ -11,24 +11,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import db.ScreenRoom;
 
 @Controller
-@RequestMapping(value = {"/screenRoom"})
+@RequestMapping(value = { "/screenRoom" })
 public class ScreenRoomController {
-	
+
 	@Autowired
 	BroadcastRepo broadcastRepo;
-	
+
 	@Autowired
 	ScreenRoomRepo screenRoomRepo;
-	
+
 	@GetMapping("add")
-	public String addBroadcast()
-	{
+	public String addBroadcast() {
 		return "addScreenRoom";
 	}
-	
+
 	@PostMapping("add")
-	public String addBroadcastForMovie(Model model, @ModelAttribute ScreenRoom screenRoom)
-	{
+	public String addBroadcastForMovie(Model model, @ModelAttribute ScreenRoom screenRoom) {
 		try {
 			screenRoomRepo.save(screenRoom);
 		} catch (Exception e) {
@@ -36,7 +34,7 @@ public class ScreenRoomController {
 			model.addAttribute("message", "Error, already in DB! Try one more time!");
 			return "addScreenRoom";
 		}
-		
+
 		return "resultAddScreenRoom";
-}
+	}
 }

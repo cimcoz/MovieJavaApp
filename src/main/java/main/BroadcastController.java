@@ -16,21 +16,20 @@ import db.Movie;
 import db.ScreenRoom;
 
 @Controller
-@RequestMapping(value = {"/broadcast"})
+@RequestMapping(value = { "/broadcast" })
 public class BroadcastController {
-	
+
 	@Autowired
 	MovieRepo movieRepo;
-	
+
 	@Autowired
 	BroadcastRepo broadcastRepo;
-	
+
 	@Autowired
 	ScreenRoomRepo screenRoomRepo;
-	
+
 	@GetMapping("add")
-	public String addBroadcast(Model m)
-	{
+	public String addBroadcast(Model m) {
 		ArrayList<String> movieNames = new ArrayList<String>();
 		ArrayList<String> screenRooms = new ArrayList<String>();
 		movieRepo.findAll().forEach(Movie -> movieNames.add(Movie.getName()));
@@ -39,10 +38,10 @@ public class BroadcastController {
 		m.addAttribute("screenRooms", screenRooms);
 		return "addBroadcast";
 	}
-	
+
 	@PostMapping("add")
-	public String addBroadcastForMovie(Model model, @ModelAttribute Broadcast broadcast, @RequestParam String name, @RequestParam String screenRoomName)
-	{
+	public String addBroadcastForMovie(Model model, @ModelAttribute Broadcast broadcast, @RequestParam String name,
+			@RequestParam String screenRoomName) {
 		try {
 			ScreenRoom sr = screenRoomRepo.getScreenRoomByName(screenRoomName);
 			Movie m = movieRepo.getMovieByName(name);
@@ -53,8 +52,7 @@ public class BroadcastController {
 			model.addAttribute("movieName", name);
 			model.addAttribute(broadcast);
 			return "resultAddBroadcast";
-			}
-		catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			return "resultExceptionAddBroadcast";
 		}

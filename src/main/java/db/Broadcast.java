@@ -18,10 +18,7 @@ import javax.persistence.UniqueConstraint;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-@Table(
-	    uniqueConstraints=
-	        @UniqueConstraint(columnNames={"date", "screenRoomId"})
-	)
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = { "date", "screenRoomId" }))
 @Entity
 public class Broadcast {
 

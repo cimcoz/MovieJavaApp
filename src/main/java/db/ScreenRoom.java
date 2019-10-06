@@ -12,12 +12,12 @@ public class ScreenRoom {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	
+
 	private int seats;
-	
-	@Column(unique=true)
+
+	@Column(unique = true)
 	private String name;
-	
+
 	public int getId() {
 		return id;
 	}
@@ -33,7 +33,7 @@ public class ScreenRoom {
 	public void setSeats(int seats) {
 		this.seats = seats;
 	}
-	
+
 	public String getName() {
 		return name;
 	}

@@ -19,23 +19,24 @@ public class Movie {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	
-	@Column(unique=true)
+
+	@Column(unique = true)
 	private String name;
-	
+
 	private int duration;
-	
-	public Movie () {}
-	
+
+	public Movie() {
+	}
+
 	@Enumerated(EnumType.STRING)
 	private Type type;
-	
+
 	@ElementCollection
 	private Collection<String> actors;
-	
+
 	@OneToMany(mappedBy = "movie", cascade = CascadeType.REMOVE)
 	private Collection<Broadcast> broadcast;
-	
+
 	public int getId() {
 		return id;
 	}
@@ -75,7 +76,7 @@ public class Movie {
 	public void setActors(Collection<String> actors) {
 		this.actors = actors;
 	}
-	
+
 	public Collection<Broadcast> getBroadcast() {
 		return broadcast;
 	}

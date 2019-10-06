@@ -9,8 +9,8 @@ import org.springframework.data.repository.query.Param;
 
 import db.Broadcast;
 
-public interface BroadcastRepo extends JpaRepository<Broadcast, Integer>{
-	
+public interface BroadcastRepo extends JpaRepository<Broadcast, Integer> {
+
 	@Query("FROM Broadcast b where date = :date")
 	public List<Broadcast> getBroadcastByDate(@Param("date") LocalDateTime date);
 }
